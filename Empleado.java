@@ -1,147 +1,63 @@
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-
-public class Empleado {
-
-    private String nombreYapellido;
-    private int DNI;
-    private String direccion;
-    private long telefono;
-    private String mail;
-    private  final LocalDateTime fechaIngreso;
-    private int rol;
+public class Empleado extends Persona implements IGestionable {
+    private String rol;
     private boolean estadoLaboral;
-    private LocalDate fechaNacimiento; 
-    private String estadoCivil;
-    private int cantHijos;
+    private String numeroLegajo; // Atributo agregado como solicitaste.
 
-
-    public Empleado(String nombreYapellido, int DNI, String direccion, long telefono, String mail, int rol, LocalDate fechaNacimiento, String estadoCivil, int cantHijos)
-    {
-        this.nombreYapellido = nombreYapellido;
-        this.DNI = DNI;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.mail = mail;
-        this.fechaIngreso = LocalDateTime.now();
+    public Empleado(String nombreApellido, String dni, String telefono, String email, String estadoCivil, int cantidadHijos, String rol, boolean estadoLaboral, String numeroLegajo) {
+        super(nombreApellido, dni, telefono, email, estadoCivil, cantidadHijos);
         this.rol = rol;
-        this.estadoLaboral = true;
-        this.fechaNacimiento = fechaNacimiento;
-        this.estadoCivil = estadoCivil;
-        this.cantHijos = cantHijos;
+        this.estadoLaboral = estadoLaboral;
+        this.numeroLegajo = numeroLegajo;
     }
 
-
-    public LocalDateTime getFechaIngreso()
-    {
-        return fechaIngreso;
-    }
-
-    public String getNombreYapellido()
-    {
-        return nombreYapellido;
-    }
-
-    public void setNombreYapellido(String nombreYapellido)
-    {
-        this.nombreYapellido = nombreYapellido;
-    }
-
-    public int getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
-    }
-
-    // Direccion
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    // Telefono
-    public long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(long telefono) {
-        this.telefono = telefono;
-    }
-
-    // Mail
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-    
-    // Rol
-    public int getRol() {
+    // Getters y Setters específicos de Empleado
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(int rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
-    public boolean isEstadoLaboral() {
+    public boolean getEstadoLaboral() {
         return estadoLaboral;
     }
 
-    // Setter de EstadoLaboral
     public void setEstadoLaboral(boolean estadoLaboral) {
         this.estadoLaboral = estadoLaboral;
     }
 
-    public String getEstadoCivil() {
-        return estadoCivil;
+    public String getNumeroLegajo() {
+        return numeroLegajo;
     }
 
-    public void setEstadoCivil(String estadoCivil)
-    {
-        this.estadoCivil = estadoCivil;
-    }
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public void setNumeroLegajo(String numeroLegajo) {
+        this.numeroLegajo = numeroLegajo;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento)
-    {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-    public long getCantHijos() {
-        return cantHijos;
+    // Comportamientos de la interfaz IGestionable
+    @Override
+    public void alta() {
+        System.out.println("Empleado dado de alta: " + getNombreApellido() + " - Legajo: " + numeroLegajo);
     }
 
-    public void setCantHijos(int cantHijos)
-    {
-        this.cantHijos = cantHijos;
+    @Override
+    public void baja() {
+        System.out.println("Empleado dado de baja: " + getNombreApellido());
     }
 
+    @Override
+    public void consultar() {
+        System.out.println("Consultando empleado: " + getNombreApellido() + " - Rol: " + rol);
+    }
+
+    @Override
+    public void modificar() {
+        System.out.println("Modificando empleado: " + getNombreApellido());
+    }
+
+    // Otros comportamientos específicos de Empleado
+    public void registrarAsistencia() {
+        System.out.println("Asistencia registrada para el empleado: " + getNombreApellido());
+    }
 }
-/* System.out.println("\n--- ALTA DE EMPLEADO ---");
-
-        System.out.println("Nombre y apellido: ");
-        String nombreYapellido = scanner.nextLine();
-
-            while(!scanner.hasNextLine())
-            {
-                System.out.println("ERROR. Ingreso un numero. \n");
-                scanner.next();
-            }
-                nombreYapellido = scanner.nextLine();
-
-            while(nombreYapellido.length()<0)
-            {
-                System.out.println("ERROR. Debe ingresar un nombre valido. Vuelva a intentarlo");
-                nombreYapellido = scanner.nextLine();
-            }
-            scanner.nextLine();*/
