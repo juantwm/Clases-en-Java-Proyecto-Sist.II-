@@ -63,4 +63,16 @@ public class Recepcionista extends Persona implements IGestionable {
     public void modificar() {
         System.out.println("Modificando recepcionista: " + getNombreApellido());
     }
+
+    public void registrarCuota(Cliente cliente, Cuota cuota) {
+        System.out.println("Recepcionista " + getNombreApellido() + " registrando pago para: " + cliente.getNombreApellido());
+        
+        // 1. Llama al método del objeto cuota para cambiar su estado (ej. de "Pendiente" a "Pagado")
+        cuota.registrarPago(); 
+        
+        // 2. (Lógica futura) Aquí iría la lógica para asociar la cuota al historial del cliente.
+        // Ejemplo: cliente.agregarCuotaAlHistorial(cuota);
+        System.out.println("Pago " + cuota.getIdPago() + " registrado y asociado al cliente.");
+    }
+
 }

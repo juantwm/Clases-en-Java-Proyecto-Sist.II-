@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Pago implements IPagable {
+public class Cuota implements IPagable {
     private String idPago;
     private LocalDate fechaPago;
     private LocalDate fechaVencimiento;
@@ -8,7 +8,7 @@ public class Pago implements IPagable {
     private String medioPago;
     private String estado; // Pendiente, Pagado, Vencido, etc.
 
-    public Pago(String idPago, LocalDate fechaPago, LocalDate fechaVencimiento, double monto, String medioPago, String estado) {
+    public Cuota(String idPago, LocalDate fechaPago, LocalDate fechaVencimiento, double monto, String medioPago, String estado) {
         this.idPago = idPago;
         this.fechaPago = fechaPago;
         this.fechaVencimiento = fechaVencimiento;
